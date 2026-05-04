@@ -41,7 +41,7 @@ export default function ClockApp() {
     <div style={styles.container}>
       <h1 style={styles.title}>とけいと ひづけの おべんきょう</h1>
 
-      {/* 画面サイズに合わせて伸び縮みするSVG時計 */}
+      {/* 画面サイズに合わせて伸縮するSVG時計 */}
       <div style={styles.clockWrapper}>
         <svg width="100%" height="100%" viewBox="0 0 200 200" style={styles.clock}>
           <circle cx="100" cy="100" r="95" fill="#ffffff" stroke="#333333" strokeWidth="6" />
@@ -110,7 +110,7 @@ export default function ClockApp() {
   );
 }
 
-// 画面サイズに柔軟に合わせるレスポンシブスタイル
+// レスポンシブ対応スタイル定義の完全版
 const styles: { [key: string]: React.CSSProperties } = {
   container: {
     display: "flex",
@@ -121,7 +121,6 @@ const styles: { [key: string]: React.CSSProperties } = {
     padding: "24px",
     backgroundColor: "#f9f9f9",
     borderRadius: "24px",
-    // 最大幅を400pxから600pxに拡張。画面幅の90%を使って大きく表示
     width: "90vw",
     maxWidth: "600px",
     margin: "20px auto",
@@ -129,13 +128,12 @@ const styles: { [key: string]: React.CSSProperties } = {
     boxSizing: "border-box",
   },
   title: {
-    fontSize: "28px", // 少し大きく
+    fontSize: "28px",
     color: "#2c3e50",
     marginBottom: "20px",
     textAlign: "center",
   },
   clockWrapper: {
-    // 画面の横幅に合わせて自動で伸縮する正方形のエリア
     width: "100%",
     maxWidth: "450px", 
     aspectRatio: "1 / 1",
@@ -155,13 +153,13 @@ const styles: { [key: string]: React.CSSProperties } = {
     boxSizing: "border-box",
   },
   dateText: {
-    fontSize: "22px", // タブレットで見やすいように大きく
+    fontSize: "22px",
     color: "#555",
     fontWeight: "bold",
     marginBottom: "6px",
   },
   timeText: {
-    fontSize: "32px", // メインの時間を強調
+    fontSize: "32px",
     fontWeight: "bold",
     color: "#ff4d4d",
   },
@@ -173,6 +171,55 @@ const styles: { [key: string]: React.CSSProperties } = {
   },
   buttonAutomate: {
     width: "100%",
-    padding: "18px 0", // タップしやすい高さ
-    fontSize: "22px",   // 文字サイズを大きく
+    padding: "18px 0",
+    fontSize: "22px",
     cursor: "pointer",
+    backgroundColor: "#4caf50",
+    color: "white",
+    border: "none",
+    borderRadius: "12px",
+    fontWeight: "bold",
+    boxShadow: "0 4px 6px rgba(76, 175, 80, 0.3)",
+    transition: "background 0.2s, transform 0.1s",
+  },
+  buttonDisabled: {
+    width: "100%",
+    padding: "18px 0",
+    fontSize: "22px",
+    backgroundColor: "#b0bec5",
+    color: "#eceff1",
+    border: "none",
+    borderRadius: "12px",
+    fontWeight: "bold",
+    cursor: "not-allowed",
+  },
+  buttonGroup: {
+    display: "flex",
+    gap: "16px",
+    width: "100%",
+  },
+  button: {
+    flex: 1,
+    padding: "16px 0",
+    fontSize: "20px",
+    cursor: "pointer",
+    backgroundColor: "#ffffff",
+    border: "2px solid #ddd",
+    borderRadius: "12px",
+    fontWeight: "bold",
+    transition: "background 0.2s",
+  },
+  buttonPrimary: {
+    flex: 1,
+    padding: "16px 0",
+    fontSize: "20px",
+    cursor: "pointer",
+    backgroundColor: "#ff4d4d",
+    color: "white",
+    border: "none",
+    borderRadius: "12px",
+    fontWeight: "bold",
+    boxShadow: "0 4px 6px rgba(255, 77, 77, 0.3)",
+    transition: "background 0.2s",
+  },
+};
