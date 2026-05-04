@@ -82,8 +82,15 @@ export default function ClockApp() {
       {/* 日付と時刻の表記 */}
       <div style={styles.infoDisplay}>
         <div style={styles.dateText}>1がつ {currentDay}にち</div>
-        <div style={styles.timeText}>
-          {hours24 < 12 ? "ごぜん" : "ごご"} {hours24}じ
+        <div style={styles.timeWrapper}>
+          <div style={styles.time12}>
+            <span style={styles.label}>12じかん：</span>
+            {hours24 < 12 ? "ごぜん" : "ごご"} {hours12}じ
+          </div>
+          <div style={styles.time24}>
+            <span style={styles.label}>24じかん：</span>
+            {hours24}じ
+          </div>
         </div>
       </div>
 
@@ -110,7 +117,7 @@ export default function ClockApp() {
   );
 }
 
-// レスポンシブ対応スタイル定義の完全版
+// スタイル
 const styles: { [key: string]: React.CSSProperties } = {
   container: {
     display: "flex",
@@ -156,12 +163,29 @@ const styles: { [key: string]: React.CSSProperties } = {
     fontSize: "22px",
     color: "#555",
     fontWeight: "bold",
-    marginBottom: "6px",
+    marginBottom: "8px",
   },
-  timeText: {
-    fontSize: "32px",
+  timeWrapper: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "6px",
+    alignItems: "center",
+  },
+  time12: {
+    fontSize: "26px",
     fontWeight: "bold",
     color: "#ff4d4d",
+  },
+  time24: {
+    fontSize: "24px",
+    fontWeight: "bold",
+    color: "#2c3e50",
+  },
+  label: {
+    fontSize: "18px",
+    color: "#7f8c8d",
+    fontWeight: "normal",
+    marginRight: "4px",
   },
   buttonContainer: {
     display: "flex",
@@ -180,7 +204,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     borderRadius: "12px",
     fontWeight: "bold",
     boxShadow: "0 4px 6px rgba(76, 175, 80, 0.3)",
-    transition: "background 0.2s, transform 0.1s",
+    transition: "background 0.2s",
   },
   buttonDisabled: {
     width: "100%",
